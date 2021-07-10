@@ -17,7 +17,7 @@ const Write = () => {
                     <TextField
                         label="제목"
                         id="filled-size-small"
-                        defaultValue="Small"
+                        
                         variant="filled"
                         size="small"
                     />
@@ -26,7 +26,6 @@ const Write = () => {
                     <TextField
                         label="글쓴이"
                         id="filled-size-small"
-                        defaultValue="Small"
                         variant="filled"
                         size="small"
                     />
@@ -37,7 +36,6 @@ const Write = () => {
                         label="내용"
                         multiline
                         rows={5}
-                        defaultValue="Default Value"
                         variant="filled"
                     />
                 </Grid>

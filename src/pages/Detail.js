@@ -1,13 +1,18 @@
-import React from "react";
+import React,{useEffect} from "react";
+import { useDispatch } from "react-redux";
 import { Button, Grid, Typography } from "@material-ui/core";
+import { actionCreators as postActions} from "../redux/modules/post";
 
 const Detail = () => {
+    const dispatch = useDispatch()
     const data = [{ user: "글쓴이1", title: "제목", contents: "hello!" }];
 
+    useEffect(() => {
+        dispatch(postActions.getPost)
+    }, [])
     return (
         <>
             {data.map((item, idx) => {
-                console.log(item);
                 return (
                     <Grid
                         key={idx}
