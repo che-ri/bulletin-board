@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { actionCreators as postActions } from "../redux/modules/post";
 import { useSelector, useDispatch } from "react-redux";
+import { actionCreators as postActions } from "../redux/modules/post";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -16,15 +17,11 @@ const useStyles = makeStyles({
     },
 });
 
-const data = [
-    { number: 1, user: "글쓴이1", title: "제목" },
-    { number: 2, user: "글쓴이2", title: "제목2" },
-];
-
 export default function BasicTable() {
-    const dispatch = useDispatch();
     const post_list = useSelector(state => state.post.list);
+    const dispatch = useDispatch();
     const classes = useStyles();
+
     useEffect(() => {
         dispatch(postActions.getPostFB());
     }, []);
@@ -40,15 +37,24 @@ export default function BasicTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {post_list.map((item, idx) => (
-                        <TableRow key={idx} onClick={() => console.log("hi!")}>
-                            <TableCell component="th" scope="row">
-                                {idx}
-                            </TableCell>
-                            <TableCell align="left">{item.user}</TableCell>
-                            <TableCell align="left">{item.title}</TableCell>
-                        </TableRow>
-                    ))}
+                    {post_list
+                        ? post_list.map((item, idx) => (
+                              <TableRow
+                                  key={idx}
+                                  onClick={() => console.log("hi!")}
+                              >
+                                  <TableCell component="th" scope="row">
+                                      {idx + 1}
+                                  </TableCell>
+                                  <TableCell align="left">
+                                      {item.user}
+                                  </TableCell>
+                                  <TableCell align="left">
+                                      {item.title}
+                                  </TableCell>
+                              </TableRow>
+                          ))
+                        : ""}
                 </TableBody>
             </Table>
         </TableContainer>

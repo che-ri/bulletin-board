@@ -1,6 +1,7 @@
 import React from "react";
 import List from "../components/List";
 import { Button, Grid, Typography } from "@material-ui/core";
+import { history } from "../redux/configureStore";
 
 const Home = () => {
     return (
@@ -15,7 +16,11 @@ const Home = () => {
                     </Typography>
                 </Grid>
                 <Grid>
-                    <Button variant="contained" color="primary">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => history.push("/write")}
+                    >
                         글쓰기
                     </Button>
                 </Grid>
