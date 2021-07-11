@@ -22,7 +22,7 @@ function App() {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/write" exact component={Write} />
-                    <Route path="/detail" exact component={Detail} />
+                    <Route path="/detail/:id" exact component={Detail} />
                     <Redirect to="/" />
                 </Switch>
             </ConnectedRouter>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
+import { history } from "../redux/configureStore";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -41,7 +42,7 @@ export default function BasicTable() {
                         ? post_list.map((item, idx) => (
                               <TableRow
                                   key={idx}
-                                  onClick={() => console.log("hi!")}
+                                  onClick={() => history.push(`/detail/${idx}`)}
                               >
                                   <TableCell component="th" scope="row">
                                       {idx + 1}
