@@ -15,6 +15,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-//다른 곳에서 auth를 가지고와서 사용할 수 있도록 만들어줍니다.
 const firestore = firebase.firestore();
 export { firestore };

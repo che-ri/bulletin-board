@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { actionCreators as postActions } from "../redux/modules/post";
+import { useSelector, useDispatch } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -20,7 +22,12 @@ const data = [
 ];
 
 export default function BasicTable() {
+    const dispatch = useDispatch();
+    const post_list = useSelector(state => state.post.list);
     const classes = useStyles();
+    useEffect(() => {
+        dispatch(postActions.getPostFB());
+    }, []);
 
     return (
         <TableContainer component={Paper}>
@@ -33,10 +40,10 @@ export default function BasicTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map((item, idx) => (
+                    {post_list.map((item, idx) => (
                         <TableRow key={idx} onClick={() => console.log("hi!")}>
                             <TableCell component="th" scope="row">
-                                {item.number}
+                                {idx}
                             </TableCell>
                             <TableCell align="left">{item.user}</TableCell>
                             <TableCell align="left">{item.title}</TableCell>
